@@ -9,12 +9,12 @@ class Account extends User
     protected $discount;
     protected $payment_methods;
     
-    public function __construct($first_name, $last_name, $email, $date_of_birth, $billing_address, $shipping_address, $username, $password, $discount, $payment_methods)
+    public function __construct($first_name, $last_name, $email, $date_of_birth, $billing_address, $shipping_address, $username, $password, $payment_methods)
     {
         parent::__construct($first_name, $last_name, $email, $date_of_birth, $billing_address, $shipping_address);
         $this->setUsername($username);
         $this->setPassword($password);
-        $this->setDiscount($discount);
+        $this->setDiscount();
         $this->setPaymentMethods($payment_methods);
     }
 
@@ -72,9 +72,9 @@ class Account extends User
      *
      * @return  self
      */ 
-    public function setDiscount($discount)
+    public function setDiscount()
     {
-        $this->discount = $discount;
+        $this->discount = 20;
 
         return $this;
     }
