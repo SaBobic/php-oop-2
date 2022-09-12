@@ -94,7 +94,8 @@ class Account extends User
      */ 
     public function setPaymentMethods($payment_methods)
     {
-        $this->payment_methods = $payment_methods;
+        $this->payment_methods = [];
+        $this->payment_methods[] = $payment_methods;
 
         return $this;
     }
