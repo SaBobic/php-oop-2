@@ -50,4 +50,10 @@ class PaymentMethod
 
         return $this;
     }
+
+    public function withdrawal($amount)
+    {
+        if($amount > $this->balance) return false;
+        return $this->balance -= $amount; 
+    }
 }

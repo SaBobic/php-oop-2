@@ -18,6 +18,17 @@ class Account extends User
         $this->setPaymentMethods($payment_methods);
     }
 
+    public function buyProduct($payment_method, $item)
+    {
+        $today = date("m/Y");
+        if ($payment_method->getBalance() < $item->getPrice()) return false;
+        if ($payment_method->getExpirationDate() > $today) return false;
+
+        $price = $item->getPrice() - ($item->getPrice() / 100 * $this->getDiscount());
+        $payment_method->withdrawal($price);
+        $item->setSupply($item->getSupply() - 1);
+        return true;
+    }
 
     /**
      * Get the value of username

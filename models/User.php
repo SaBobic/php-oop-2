@@ -19,6 +19,18 @@ class User
         $this->setShippingAddress($shipping_address);
     }
 
+    public function buyProduct($payment_method, $item)
+    {
+        $today = date("m/Y");
+        if ($payment_method->getBalance() < $item->getPrice() || $payment_method->getExpirationDate() > $today){
+            return false;
+        } else {
+            $payment_method->withdrawal($item->getPrice());
+            $item->setSupply($item->getSupply() - 1);
+            return true;
+        }
+    }
+
     /**
      * Get the value of first_name
      */ 

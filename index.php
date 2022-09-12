@@ -15,7 +15,7 @@ $monge_description = "Le crocchette di Monge Salmone e Riso All Breeds Adult son
 
 $monge_all_breeds = new Food('Monge All Breeds Adult Salmone e Riso', 'Monge', $monge_description, 45.90, 0, 195, 'Cani', 290, 'Croccantini', ['Salmone', 'Riso', 'Polpa di barbabietola'], ['Maggio', 'Giugno', 'Luglio', 'Agosto'], 'Adult', 'Tutte le stazze');
 
-var_dump($user);
-var_dump($account);
 var_dump($mastercard);
-var_dump($monge_all_breeds);
+echo '<hr>';
+$account->buyProduct($mastercard, $monge_all_breeds);
+var_dump($mastercard);
