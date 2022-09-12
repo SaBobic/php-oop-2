@@ -2,12 +2,12 @@
 
 class User
 {
-    private $first_name;
-    private $last_name;
-    private $email;
-    private $date_of_birth;
-    private $billing_address;
-    private $shipping_address;
+    protected $first_name;
+    protected $last_name;
+    protected $email;
+    protected $date_of_birth;
+    protected $billing_address;
+    protected $shipping_address;
 
     public function __construct($first_name, $last_name, $email, $date_of_birth, $billing_address, $shipping_address)
     {
