@@ -21,8 +21,15 @@ class Account extends User
     public function buyProduct($payment_method, $item)
     {
         $today = date("m/Y");
+        $month = 'Agosto';
         if ($payment_method->getBalance() < $item->getPrice()) return false;
         if ($payment_method->getExpirationDate() > $today) return false;
+        if($item->getAvailabilityMonths()){
+            if(!in_array($month, $item->getAvailabilityMonths())){
+                echo 'Prodotto non disponibile in questa mensilità';
+                return false;
+            }
+        }
 
         $price = $item->getPrice() - ($item->getPrice() / 100 * $this->getDiscount());
         $payment_method->withdrawal($price);
