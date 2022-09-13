@@ -22,13 +22,19 @@ class User
     public function buyProduct($payment_method, $item)
     {
         $today = date("m/Y");
-        if ($payment_method->getBalance() < $item->getPrice() || $payment_method->getExpirationDate() > $today){
-            return false;
-        } else {
-            $payment_method->withdrawal($item->getPrice());
-            $item->setSupply($item->getSupply() - 1);
-            return true;
+        $month = 'Settembre';
+        if ($payment_method->getBalance() < $item->getPrice()) return false;
+        if ($payment_method->getExpirationDate() > $today) return false;
+        if($item->getAvailabilityMonths()){
+            if(!in_array($month, $item->getAvailabilityMonths())){
+                echo 'Prodotto non disponibile in questa mensilità';
+                return false;
+            }
         }
+
+        $payment_method->withdrawal($item->getPrice());
+        $item->setSupply($item->getSupply() - 1);
+        return true;
     }
 
     /**
