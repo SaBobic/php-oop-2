@@ -100,9 +100,9 @@ class Account extends User
     /**
      * Get the value of payment_methods
      */ 
-    public function getPaymentMethods()
+    public function getPaymentMethods($index)
     {
-        return $this->payment_methods;
+        return $this->payment_methods[$index];
     }
 
     /**
