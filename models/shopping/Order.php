@@ -8,7 +8,7 @@ class Order
     private $products;
     private $status;
 
-    public function __construct($address, $payment_method, $amount, $products, $status)
+    public function __construct($address, $payment_method, $amount, $products, $status = 'Pending')
     {
         $this->setAddress($address);
         $this->setPaymentMethod($payment_method);
@@ -119,7 +119,12 @@ class Order
 
     public function performPayment()
     {
-        return $this->payment_method->getBalance() >= $this->amount;
+        if($this->payment_method->getBalance() >= $this->amount && $this->payment_method->isValid()){
+            $this->payment_method->setBalance($this->payment_method->getBalance() - $this->amount);
+            echo 'Ordine riuscito';
+        } else {
+            echo 'Errore: ordine non riuscito';
+        }
     }
 }
 

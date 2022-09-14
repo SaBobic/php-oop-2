@@ -6,15 +6,13 @@ class Product
     protected $brand;
     protected $price;
     protected $target_species;
-    protected $supply;
 
-    public function __construct($name, $brand, $price, $target_species, $supply)
+    public function __construct($name, $brand, $price, $target_species)
     {
         $this->setName($name);
         $this->setBrand($brand);
         $this->setPrice($price);
         $this->setTargetSpecies($target_species);
-        $this->setSupply($supply);
     }
 
     /**
@@ -93,26 +91,6 @@ class Product
     public function setTargetSpecies($target_species)
     {
         $this->target_species = $target_species;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of supply
-     */ 
-    public function getSupply()
-    {
-        return $this->supply;
-    }
-
-    /**
-     * Set the value of supply
-     *
-     * @return  self
-     */ 
-    public function setSupply($supply)
-    {
-        $this->supply = $supply;
 
         return $this;
     }

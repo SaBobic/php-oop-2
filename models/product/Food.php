@@ -8,9 +8,9 @@ class Food extends Product
     protected $ingredients;
     protected $availability_months;
 
-    public function __construct($name, $brand, $price, $target_species, $supply, $form, $ingredients, $availability_months)
+    public function __construct($name, $brand, $price, $target_species, $form, $ingredients, $availability_months)
     {
-        parent::__construct($name, $brand, $price, $target_species, $supply);
+        parent::__construct($name, $brand, $price, $target_species);
         $this->setForm($form);
         $this->setIngredients($ingredients);
         $this->setAvailabilityMonths($availability_months);
