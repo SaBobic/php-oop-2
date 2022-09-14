@@ -15,23 +15,6 @@ $account = new CustomerWithAccount('Michele', 'Rossi', 'michelerossi@gmail.com',
 $monge = new Food('Monge al salmone', 'Monge', 40, 'Cani', 290, 'Croccantini', ['Salmone', 'Riso', 'Polpa di barbabietola'], ['Maggio', 'Giugno', 'Luglio', 'Agosto']);
 $eucanuba = new Food('Eucanuba al formaggio', 'Eucanuba', 20, 'Cani', 290, 'Croccantini', ['Salmone', 'Riso', 'Polpa di barbabietola'], ['Maggio', 'Giugno', 'Luglio', 'Agosto']);
 
-$carrello = new Cart();
+$customer = new Customer();
 
-$carrello->addProduct($monge);
-$carrello->addProduct($eucanuba);
-
-var_dump($carrello->getProductsList());
-
-echo '<hr>';
-
-var_dump($carrello->getTotal());
-
-echo '<hr>';
-
-$carrello->removeProduct($eucanuba);
-
-var_dump($carrello->getProductsList());
-
-echo '<hr>';
-
-var_dump($carrello->getTotal());
+$customer->addToCart($monge);

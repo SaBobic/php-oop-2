@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../shopping/Cart.php';
+
 class Customer
 {
     protected $cart;
@@ -8,7 +10,6 @@ class Customer
     {
         $this->setCart();
     }
-
 
     /**
      * Get the value of cart
@@ -25,8 +26,16 @@ class Customer
      */ 
     public function setCart()
     {
-        $this->cart = [];
+        $this->cart = new Cart();
+    }
 
-        return $this;
+    public function addToCart($item)
+    {
+        $this->cart->addProduct($item);
+    }
+
+    public function removeFromCart($item)
+    {
+        $this->cart->removeProduct($item);
     }
 }
