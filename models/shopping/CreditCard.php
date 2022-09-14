@@ -78,4 +78,11 @@ class CreditCard
 
         return $this;
     }
+
+    public function isValid()
+    {
+        $today = strtotime(date("d-m-Y"));
+        $expiration = strtotime($this->expiration_date);
+        return $today < $expiration;
+    }
 }

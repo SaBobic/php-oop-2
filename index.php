@@ -8,7 +8,7 @@ include_once __DIR__ . '/models/shopping/Cart.php';
 
 $user = new Customer();
 
-$mastercard = new CreditCard('9345892849238', 25000, '03/27');
+$mastercard = new CreditCard('9345892849238', 25000, '2022-09-15');
 
 $account = new CustomerWithAccount('Michele', 'Rossi', 'michelerossi@gmail.com', '08/09/1996', 'Via Bella 95', 'Via Bella 95', 'Micheletto95', 'passwordpotente', $mastercard);
 
