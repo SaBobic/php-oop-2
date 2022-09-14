@@ -1,9 +1,9 @@
 <?php
 
-include_once __DIR__ . '/models/User.php';
-include_once __DIR__ . '/models/Account.php';
-include_once __DIR__ . '/models/Food.php';
-include_once __DIR__ . '/models/PaymentMethod.php';
+include_once __DIR__ . '/models/customer/User.php';
+include_once __DIR__ . '/models/customer/Account.php';
+include_once __DIR__ . '/models/product/Food.php';
+include_once __DIR__ . '/models/shopping/PaymentMethod.php';
 
 $user = new User('Carlo', 'Bianchi', 'carlobianchi@gmail.com', '08/09/1973', 'Via Brutta 23', 'Via Brutta 23');
 
