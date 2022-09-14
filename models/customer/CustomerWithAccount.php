@@ -7,16 +7,17 @@ class CustomerWithAccount extends Customer
     private $first_name;
     private $last_name;
     private $email;
-    private $addresses;
+    private $address;
     private $payment_methods;
     private $discount;
 
-    public function __construct($first_name, $last_name, $email, $addresses, $payment_methods)
+    public function __construct($first_name, $last_name, $email, $address, $payment_methods)
     {
+        parent::__construct();
         $this->setFirstName($first_name);
         $this->setLastName($last_name);
         $this->setEmail($email);
-        $this->setAddresses($addresses);
+        $this->setAddress($address);
         $this->setPaymentMethods($payment_methods);
         $this->setDiscount();
     }
@@ -82,21 +83,21 @@ class CustomerWithAccount extends Customer
     }
 
     /**
-     * Get the value of addresses
+     * Get the value of address
      */ 
-    public function getAddresses()
+    public function getAddress()
     {
-        return $this->addresses;
+        return $this->address;
     }
 
     /**
-     * Set the value of addresses
+     * Set the value of address
      *
      * @return  self
      */ 
-    public function setAddresses($addresses)
+    public function setAddress($address)
     {
-        $this->addresses = $addresses;
+        $this->address = $address;
 
         return $this;
     }
@@ -134,10 +135,20 @@ class CustomerWithAccount extends Customer
      *
      * @return  self
      */ 
-    public function setDiscount($discount = 20)
+    public function setDiscount($discount = 0.8)
     {
         $this->discount = $discount;
 
         return $this;
+    }
+
+    public function placeOrder($address = null, $payment_method = null)
+    {
+        if(!$address) $address = $this->address;
+        if(!$payment_method) $payment_method = $this->payment_methods;
+        $amount = $this->cart->getTotal() * $this->discount;
+        $products = $this->cart->getProductsList();
+        $order = new Order($address, $payment_method, $amount, $products);
+        $order->performPayment();
     }
 }
