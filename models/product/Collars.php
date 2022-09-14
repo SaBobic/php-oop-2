@@ -8,9 +8,9 @@ class Collars extends Product
     protected $materials;
     protected $closure_type;
 
-    public function __construct($name, $brand, $description, $price, $discount, $ratings, $target_species, $supply, $color, $materials, $closure_type)
+    public function __construct($name, $brand, $price, $target_species, $supply, $color, $materials, $closure_type)
     {
-        parent::__construct($name, $brand, $description, $price, $discount, $ratings, $target_species, $supply);
+        parent::__construct($name, $brand, $price, $target_species, $supply);
         $this->setColor($color);
         $this->setMaterials($materials);
         $this->setClosureType($closure_type);

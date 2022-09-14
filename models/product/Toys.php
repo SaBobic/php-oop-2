@@ -9,11 +9,10 @@ class Toys extends Product
     protected $theme;
     protected $materials;
 
-    public function __construct($name, $brand, $description, $price, $discount, $ratings, $target_species, $supply, $type, $breed_size, $theme, $materials)
+    public function __construct($name, $brand, $price, $target_species, $supply, $type, $theme, $materials)
     {
-        parent::__construct($name, $brand, $description, $price, $discount, $ratings, $target_species, $supply);
+        parent::__construct($name, $brand, $price, $target_species, $supply);
         $this->setType($type);
-        $this->setBreedSize($breed_size);
         $this->setTheme($theme);
         $this->setMaterials($materials);
     }
@@ -34,26 +33,6 @@ class Toys extends Product
     public function setType($type)
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of breed_size
-     */ 
-    public function getBreedSize()
-    {
-        return $this->breed_size;
-    }
-
-    /**
-     * Set the value of breed_size
-     *
-     * @return  self
-     */ 
-    public function setBreedSize($breed_size)
-    {
-        $this->breed_size = $breed_size;
 
         return $this;
     }

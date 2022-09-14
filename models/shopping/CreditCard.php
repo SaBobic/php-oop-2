@@ -1,12 +1,14 @@
 <?php
 
-class PaymentMethod
+class CreditCard
 {
-    private $balance;
+    private $number;
     private $expiration_date;
+    private $balance;
 
-    public function __construct($balance, $expiration_date)
+    public function __construct($number, $balance, $expiration_date)
     {
+        $this->setNumber($number);
         $this->setBalance($balance);
         $this->setExpirationDate($expiration_date);
     }
@@ -55,5 +57,25 @@ class PaymentMethod
     {
         if($amount > $this->balance) return false;
         return $this->balance -= $amount; 
+    }
+
+    /**
+     * Get the value of number
+     */ 
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * Set the value of number
+     *
+     * @return  self
+     */ 
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
     }
 }
